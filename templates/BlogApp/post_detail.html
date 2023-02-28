@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{%extends 'BlogApp/base.html'%}
+{%block title %}{{post.title}}{%endblock%}
+{%block content%}
+    {% load static %}
+    <a href="."><img src="{% static 'images/homeicon2.png' %}" id="img1"> </a>
+    <h1>{{post.title}}</h1>
+    <hr />
+    <p id='date'>Published on {{post.publish}} by {{post.author|title}}</p>
+    {{post.body|linebreaks}}<br/>
+    <a href="/{{ post.id }}/share/" class="btn btn-sm btn-primary">Send mail</a><br/><br/>
+    <h2>Similar Posts</h2>
+    {%if similar_posts%}
+	    {%for post in similar_posts%}
+		    <h3> <a href="{{post.get_absolute_url}}">{{post.title}}</a> </h3>
+	    {%endfor%}
+    {%else%}
+	    <p>No Similar Posts yet</p>
+    {%endif%}<br/><br/>
+    {% with comments.count as comments_count %}
+            <h3>{{ comments_count }}comment {{ comments_count|pluralize }}</h3>
+    {% endwith %}
+    {% if comments %}
+        {% for comment in comments %}
+            <p id="c1">Comment {{ forloop.counter }} by {{ comment.name }} on {{ comment.created }}</p>
+            <p id="c2">{{ comment.body|linebreaks }}</p>
+            <hr/>
+        {% endfor %}
+    {% else %}
+            <p>There are NO comment yet!!!</p>
+    {% endif %}
+    {% if csubmit %}
+        <h3>Comment Added Succesfully!!!</h3>
+    {% else %}
+        <form method="post">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <input type="submit" value="submit-Comment">
+        </form>
+    {% endif %}
+    <a href="/">Back</a>
+{%endblock%}

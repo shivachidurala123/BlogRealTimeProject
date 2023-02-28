@@ -1,0 +1,42 @@
+.content{
+    float:left;
+    width: 60%;
+    padding:0 0 0 30px;
+}
+.sidebar{
+    float:right;
+    width:32%;
+    padding:15px;
+    background: #c1d6cc;
+    height: 65vh;
+}
+h1{
+    text-align: center;
+    border:2px solid brown;
+    padding: 2px 3px 10px 0;
+    margin: 10px;
+}
+#date{
+    color:#1a1d20;
+    font-size:12px;
+    font-style: italic;
+    font-weight:bold;
+}
+body{
+    background: #9eeaf9;
+    color:black;
+}
+#c1{
+    color:#2c0b0e;
+    font-size: 15px;
+    font-style: italic;
+    font-weight:bold;
+}
+#img1{
+    height:60px;
+    width: 60px;
+    float: left;
+    margin: 10px;
+    padding: 10px;
+}
+
